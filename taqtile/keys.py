@@ -335,7 +335,8 @@ def get_keys(mod, num_groups, num_monitors):
         # ([mod], "b", lazy.function(hide_show_bar)),
         ([mod], "b", lazy.hide_show_bar("bottom")),
         # ([mod, "shift"], "F2", lazy.function(dmenu_xclip, dmenu_cmd_args)),
-        (["mod1", "control"], "v", lazy.function(dmenu_xclip, dmenu_cmd_args)),
+        (["mod1", "control"], "v", lazy.function(dmenu_xclip)),
+        (["mod1", "shift"], "v", lazy.function(dmenu_xclip, True)),
         # (["mod1", "control"], "v", lazy.spawn("clipmenu")),
         # (["shift", mod], "v", lazy.function(dmenu_clip)),
         # ([], "XF86Launch1", lazy.function(

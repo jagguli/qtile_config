@@ -12,7 +12,6 @@ from plumbum import local
 from taqtile.themes import dmenu_cmd_args
 from taqtile.widgets.obscontrol import obs_pause_recording, obs_resume_recording
 
-logger = logging.getLogger(__name__)
 
 use_selection = "CLIPBOARD"
 blacklist = []
@@ -25,6 +24,8 @@ history_file = os.path.expanduser(
         os.environ.get("XDG_RUNTIME_DIR", "~/"), "clipmenu.6.steven/line_cache"
     )
 )
+
+from taqtile.log import logger
 
 
 def is_blacklisted(owner_id):
@@ -95,10 +96,15 @@ def copy_xclip(text, primary=False):
     p.communicate(input=text.encode(ENCODING))
 
 
-def dmenu_xclip(qtile, args):
+def dmenu_xclip(qtile, output_clip=False):
+    logger.exception("Error getting selection %s", output_clip)
     try:
         obs_pause_recording()
+        if output_clip:
+            local.env["CM_OUTPUT_CLIP"] = "1"
         clipmenu = local["clipmenu"]
-        clipmenu("-c", "-i", "-p", "Clipmenu")
+        output = clipmenu("-c", "-i", "-p", "Clipmenu")
+        if output_clip:
+            local["xdotool"]("type", output)
     finally:
         obs_resume_recording()
