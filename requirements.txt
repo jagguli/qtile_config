@@ -10,3 +10,4 @@ multitimer
 qtile_extras
 tzupdate
 websocket-client==1.6.2
+obsws-python

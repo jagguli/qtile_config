@@ -1,15 +1,1 @@
-yay -S qtile-git
-yay -S qtile-extras-git
-yay -S python-simpleaudio
-yay -S python-plumbum
-yay -S python-pytz
-yay -S python-psutil
-yay -S python-dbus-next
-yay -S pywal-git
-yay -S python-numpy
-yay -S python-mpd2
-yay -S python-pydub
-yay -S python-pulsectl
-yay -S python-pyalsaaudio
-yay -S python-websocket-client
-yay -S tzupdate
+yay -S --needed --noconfirm qtile qtile-extras python-simpleaudio python-plumbum python-pytz python-psutil python-dbus-next python-numpy python-mpd2 python-pydub python-pulsectl python-pyalsaaudio python-websocket-client tzupdate recordmydesktop python-pywal 
